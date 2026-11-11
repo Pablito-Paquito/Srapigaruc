@@ -1,0 +1,141 @@
+<!DOCTYPE html>
+<html lang="fr">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
+<title>Srapigaruc – Go wild.</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link href="https://fonts.googleapis.com/css2?family=Gloock&display=swap" rel="stylesheet">
+<style>
+:root{--bg:#eef1e8;--surface:#fbfcf8;--ink:#1c2f26;--muted:#5d6e63;--line:#d5dccf;--green:#1f4a38;--gold:#f2b824;--coral:#e8625f;--teal:#2a7f8c;--hero:#1f4a38;--hero-ink:#f6f3e4;--on:#f6f3e4;
+box-sizing:border-box;padding-bottom:env(safe-area-inset-bottom,0px);color-scheme:light}
+@media (prefers-color-scheme:dark){:root:not([data-theme="light"]){--bg:#101a15;--surface:#17251d;--ink:#e9efe3;--muted:#9bada1;--line:#2b3d33;--green:#7fc9a0;--coral:#f0807c;--teal:#5fb7c4;--hero:#0c2a1f;--on:#101a15;color-scheme:dark}}
+:root[data-theme="dark"]{--bg:#101a15;--surface:#17251d;--ink:#e9efe3;--muted:#9bada1;--line:#2b3d33;--green:#7fc9a0;--coral:#f0807c;--teal:#5fb7c4;--hero:#0c2a1f;--on:#101a15;color-scheme:dark}
+*{box-sizing:border-box}
+html{scroll-behavior:smooth;scroll-padding-top:calc(70px + env(safe-area-inset-top,0px))}
+body{margin:0;background:var(--bg);color:var(--ink);font:17px/1.6 system-ui,-apple-system,"Segoe UI",Roboto,sans-serif}
+h1,h2,h3,.logo{font-family:Gloock,Georgia,serif;font-weight:400;margin:0;line-height:1.08}
+a{color:inherit}
+body:before{content:"";position:fixed;inset:0 0 auto;height:env(safe-area-inset-top,0px);background:var(--hero);z-index:21}
+nav{position:sticky;top:env(safe-area-inset-top,0px);z-index:20;background:var(--hero);color:var(--hero-ink);display:flex;justify-content:space-between;align-items:center;padding:12px 22px}
+.logo{font-size:24px;text-decoration:none}
+nav div{display:flex;gap:20px;font-size:15px}
+nav a{text-decoration:none;opacity:.85}nav a:hover{opacity:1;color:var(--gold)}
+.hero{background:var(--hero);color:var(--hero-ink);position:relative;overflow:hidden;padding:64px 22px 0;text-align:center}
+.hero:before{content:"";position:absolute;left:50%;top:40px;width:min(52vw,320px);aspect-ratio:1;border-radius:50%;background:var(--gold);transform:translateX(-50%);opacity:.95}
+.hero>*{position:relative}
+.hero .tag,.tag{font-size:12px;font-weight:700;letter-spacing:.2em;text-transform:uppercase;color:var(--gold)}
+.hero h1{font-size:clamp(56px,14vw,148px);margin:14px 0 10px;letter-spacing:-.02em;text-shadow:0 2px 0 rgba(0,0,0,.18)}
+.hero p{max-width:42ch;margin:0 auto 26px;font-size:19px;opacity:.92}
+.btn{display:inline-block;background:var(--gold);color:#1c2f26;font-weight:700;text-decoration:none;border-radius:99px;padding:13px 28px}
+.btn.o{background:none;color:inherit;border:2px solid currentColor;margin-left:8px}
+.btn:focus-visible,nav a:focus-visible{outline:3px solid var(--gold);outline-offset:3px}
+.hero svg{display:block;width:100%;height:auto;margin-top:34px}
+section{padding:72px 22px}
+.in{max-width:1000px;margin:0 auto}
+h2{font-size:clamp(30px,5vw,46px);margin:8px 0 14px}
+.lead{color:var(--muted);max-width:56ch;margin:0 0 34px}
+.vals{display:grid;grid-template-columns:repeat(auto-fit,minmax(220px,1fr));gap:16px}
+.val{background:var(--surface);border:1px solid var(--line);border-radius:22px;padding:26px}
+.val b{font:400 34px Gloock,Georgia,serif;display:block;margin-bottom:6px}
+.val:nth-child(1) b{color:var(--teal)}.val:nth-child(2) b{color:var(--green)}.val:nth-child(3) b{color:var(--coral)}
+.val p{margin:0;color:var(--muted);font-size:16px}
+.dark{background:var(--hero);color:var(--hero-ink)}
+.dark .lead{color:var(--hero-ink);opacity:.8}
+.cards{display:grid;grid-template-columns:repeat(auto-fit,minmax(250px,1fr));gap:16px}
+.card{background:rgba(255,255,255,.08);border:1px solid rgba(255,255,255,.16);border-radius:22px;overflow:hidden}
+.card svg{display:block;width:100%;height:120px}
+.card div{padding:20px 22px 24px}
+.card h3{font-size:26px;margin-bottom:8px}
+.card p{margin:0;opacity:.85;font-size:16px}
+.pal{display:flex;gap:12px;flex-wrap:wrap;margin-top:6px}
+.sw{flex:1 1 130px;border-radius:20px;height:150px;padding:14px;display:flex;align-items:flex-end;font:700 14px system-ui;color:#1c2f26;border:1px solid var(--line)}
+.sw.l{color:#f6f3e4}
+.steps{display:grid;grid-template-columns:repeat(auto-fit,minmax(200px,1fr));gap:14px;margin-top:6px}
+.st{border-left:4px solid var(--gold);padding:4px 0 4px 16px}
+.st small{color:var(--coral);font-weight:700;letter-spacing:.1em;text-transform:uppercase;font-size:12px}
+.st p{margin:4px 0 0;color:var(--muted);font-size:16px}
+.cta{text-align:center;background:var(--surface);border-top:1px solid var(--line)}
+.cta h2{font-size:clamp(34px,6vw,60px)}
+.cta .btn{background:var(--green);color:var(--on)}
+footer{background:var(--hero);color:var(--hero-ink);text-align:center;padding:30px 22px calc(30px + env(safe-area-inset-bottom,0px));font-size:14px;opacity:1}
+footer b{font:400 22px Gloock,Georgia,serif;display:block;margin-bottom:4px}
+@media (max-width:640px){nav div a:nth-child(n+3){display:none}.btn.o{margin:10px 0 0}section{padding:54px 20px}}
+</style>
+</head>
+<body>
+
+<nav>
+<a class="logo" href="#top">Srapigaruc</a>
+<div><a href="#univers">L’univers</a><a href="#collection">Collection</a><a href="#couleurs">Couleurs</a><a href="#suivre">Suivre</a></div>
+</nav>
+
+<header class="hero" id="top">
+<div class="tag">Marque de randonnée</div>
+<h1>Go wild.</h1>
+<p>Des vêtements et des équipements pensés pour la forêt, les sentiers et les sommets. Partez. Respirez. Vivez.</p>
+<a class="btn" href="#collection">Découvrir la collection</a><a class="btn o" href="#univers">Notre univers</a>
+<svg viewBox="0 0 1200 220" preserveAspectRatio="none" aria-hidden="true">
+<path d="M0,220 L0,150 L120,90 L220,130 L360,40 L470,110 L600,60 L720,120 L850,30 L980,100 L1100,70 L1200,110 L1200,220Z" fill="#fff" opacity=".13"/>
+<path d="M0,220 L0,175 L90,140 L200,170 L330,100 L450,160 L580,115 L700,165 L830,95 L960,155 L1080,125 L1200,160 L1200,220Z" fill="var(--teal)" opacity=".8"/>
+<path d="M0,220 L0,200 L140,170 L260,195 L400,150 L540,195 L680,160 L820,200 L960,170 L1100,195 L1200,180 L1200,220Z" fill="var(--bg)"/>
+</svg>
+</header>
+
+<section id="univers"><div class="in">
+<div class="tag">L’univers</div>
+<h2>Trois verbes, une façon de vivre dehors.</h2>
+<p class="lead">Srapigaruc, c’est l’envie de quitter l’écran pour le sentier. Chaque pièce est imaginée pour vous accompagner du premier pas jusqu’au sommet.</p>
+<div class="vals">
+<div class="val"><b>Partez.</b><p>Sac sur le dos, sans trop réfléchir. L’aventure commence à la porte de chez vous.</p></div>
+<div class="val"><b>Respirez.</b><p>La forêt, la brume, le silence. Prenez le temps de lever la tête.</p></div>
+<div class="val"><b>Vivez.</b><p>Des souvenirs qui se gagnent à la force des jambes et se partagent en cordée.</p></div>
+</div>
+</div></section>
+
+<section class="dark" id="collection"><div class="in">
+<div class="tag">La première collection</div>
+<h2>Tout pour partir bien équipé.</h2>
+<p class="lead">Une première collection qui réunit vêtements, sac à dos et kits, pour s’équiper sans se compliquer la vie.</p>
+<div class="cards">
+<div class="card"><svg viewBox="0 0 300 120" preserveAspectRatio="xMidYMax slice" aria-hidden="true"><rect width="300" height="120" fill="var(--teal)" opacity=".35"/><path d="M0,120 L70,40 L120,85 L190,20 L300,120Z" fill="var(--gold)"/></svg><div><h3>Les kits</h3><p>Des ensembles composés de plusieurs éléments, pensés pour aller ensemble sur le terrain.</p></div></div>
+<div class="card"><svg viewBox="0 0 300 120" preserveAspectRatio="xMidYMax slice" aria-hidden="true"><rect width="300" height="120" fill="var(--coral)" opacity=".35"/><path d="M0,120 L60,60 L110,95 L180,30 L300,120Z" fill="var(--hero-ink)" opacity=".9"/></svg><div><h3>Le sac à dos</h3><p>Des matériaux choisis avec soin et des finitions travaillées pour durer.</p></div></div>
+<div class="card"><svg viewBox="0 0 300 120" preserveAspectRatio="xMidYMax slice" aria-hidden="true"><rect width="300" height="120" fill="var(--gold)" opacity=".3"/><path d="M0,120 L80,50 L140,90 L210,25 L300,120Z" fill="var(--coral)"/></svg><div><h3>Les vêtements</h3><p>Portés en pleine forêt, aux couleurs et motifs qui font l’identité de la marque.</p></div></div>
+</div>
+</div></section>
+
+<section id="couleurs"><div class="in">
+<div class="tag">Nos couleurs</div>
+<h2>La nature comme palette.</h2>
+<p class="lead">Vert forêt, or du soleil levant, corail du ciel au crépuscule, bleu des lacs d’altitude. Chaque collection puise ses motifs dans ces teintes.</p>
+<div class="pal">
+<div class="sw l" style="background:#1f4a38">Vert forêt</div>
+<div class="sw" style="background:#f2b824">Or</div>
+<div class="sw" style="background:#e8625f">Corail</div>
+<div class="sw l" style="background:#2a7f8c">Lac</div>
+<div class="sw" style="background:#f6f3e4">Brume</div>
+</div>
+</div></section>
+
+<section style="padding-top:0"><div class="in">
+<div class="tag">Ce qui arrive</div>
+<h2>Quatre semaines pour nous découvrir.</h2>
+<p class="lead">Suivez le lancement de la marque, étape par étape.</p>
+<div class="steps">
+<div class="st"><small>Semaine 1</small><p>L’univers de la marque, qui se cache derrière Srapigaruc et les premiers kits.</p></div>
+<div class="st"><small>Semaine 2</small><p>La collection en forêt, la palette, les matériaux et les finitions.</p></div>
+<div class="st"><small>Semaine 3</small><p>La check-list du randonneur, tous les équipements et les coulisses d’un shooting.</p></div>
+<div class="st"><small>Semaine 4</small><p>La collection en action, puis le récap de tout l’univers.</p></div>
+</div>
+</div></section>
+
+<section class="cta" id="suivre"><div class="in">
+<div class="tag">Rejoignez la cordée</div>
+<h2>Suivez l’aventure.</h2>
+<p class="lead" style="margin:10px auto 28px">Toutes les nouveautés, les coulisses et les premiers kits se passent sur Instagram.</p>
+<a class="btn" href="https://www.instagram.com/srapigaruc_/" target="_blank" rel="noopener">@srapigaruc_ sur Instagram</a>
+</div></section>
+
+<footer><b>Srapigaruc</b>Marque de randonnée · Go wild. · © 2026</footer>
+</body>
+</html>
