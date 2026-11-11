@@ -1,0 +1,155 @@
+<!DOCTYPE html>
+<html lang="fr">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
+<title>Srapigaruc – Équipement de randonnée</title>
+<style>
+:root{--bg:#ffffff;--alt:#f3f1ea;--ink:#141a16;--muted:#5f6862;--line:#dedbd0;--green:#1f4a38;--gold:#f2b824;--bar:#141a16;--bar-ink:#f6f3e4;color-scheme:light;box-sizing:border-box}
+@media (prefers-color-scheme:dark){:root:not([data-theme="light"]){--bg:#0e1511;--alt:#16201a;--ink:#eef0e8;--muted:#9aa79e;--line:#273329;--green:#7fc9a0;--bar:#1f4a38;--bar-ink:#f6f3e4;color-scheme:dark}}
+:root[data-theme="dark"]{--bg:#0e1511;--alt:#16201a;--ink:#eef0e8;--muted:#9aa79e;--line:#273329;--green:#7fc9a0;--bar:#1f4a38;--bar-ink:#f6f3e4;color-scheme:dark}
+*{box-sizing:border-box}
+html{scroll-behavior:smooth;scroll-padding-top:calc(110px + env(safe-area-inset-top,0px))}
+body{margin:0;background:var(--bg);color:var(--ink);font:16px/1.6 system-ui,-apple-system,"Helvetica Neue",Arial,sans-serif}
+a{color:inherit}
+body:before{content:"";position:fixed;inset:0 0 auto;height:env(safe-area-inset-top,0px);background:var(--bar);z-index:31}
+.ann{position:relative;background:var(--bar);color:var(--bar-ink);text-align:center;font-size:13px;padding:9px 16px;padding-top:calc(9px + env(safe-area-inset-top,0px))}
+.ann a{text-decoration:underline;margin-left:6px}
+header{position:sticky;top:env(safe-area-inset-top,0px);z-index:30;background:var(--bg);border-bottom:1px solid var(--line);display:flex;align-items:center;justify-content:space-between;gap:20px;padding:16px 28px}
+.logo{font-weight:800;letter-spacing:.28em;text-transform:uppercase;font-size:17px;text-decoration:none}
+nav{display:flex;gap:26px;font-size:14px;font-weight:600;letter-spacing:.04em}
+nav a{text-decoration:none;padding:4px 0;border-bottom:2px solid transparent}
+nav a:hover{border-color:var(--ink)}
+.ig{font-size:14px;font-weight:600;text-decoration:none;border:1.5px solid var(--ink);padding:7px 16px;border-radius:2px}
+a:focus-visible{outline:3px solid var(--gold);outline-offset:3px}
+.sc{display:block;width:100%;height:100%}
+.hero{position:relative;height:min(82vh,720px);min-height:460px;overflow:hidden;background:#1f4a38}
+.hero .sc{position:absolute;inset:0}
+.hero .txt{position:absolute;left:0;right:0;bottom:0;padding:48px 28px;background:linear-gradient(0deg,rgba(0,0,0,.55),transparent);color:#fff}
+.hero h1{font-size:clamp(44px,9vw,104px);line-height:.95;margin:0 0 14px;font-weight:800;letter-spacing:-.03em;max-width:12ch}
+.hero p{margin:0 0 22px;max-width:46ch;font-size:18px}
+.btn{display:inline-block;background:#fff;color:#141a16;font-weight:700;font-size:14px;text-decoration:none;padding:13px 26px;border-radius:2px;margin-right:8px}
+.btn.l{background:none;color:#fff;border:1.5px solid #fff}
+.sec{padding:72px 28px;max-width:1240px;margin:0 auto}
+h2{font-size:clamp(26px,4vw,40px);line-height:1.1;margin:0 0 8px;font-weight:800;letter-spacing:-.02em}
+.sub{color:var(--muted);margin:0 0 28px;max-width:56ch}
+.k{font-size:12px;font-weight:700;letter-spacing:.16em;text-transform:uppercase;color:var(--green);margin-bottom:10px}
+.tiles{display:grid;grid-template-columns:repeat(auto-fit,minmax(280px,1fr));gap:6px}
+.tile{position:relative;aspect-ratio:4/5;overflow:hidden;text-decoration:none;color:#fff;background:#1f4a38}
+.tile .sc{position:absolute;inset:0;transition:transform .6s}
+.tile:hover .sc{transform:scale(1.04)}
+.tile span{position:absolute;left:22px;bottom:22px;font-size:26px;font-weight:800;letter-spacing:-.01em;text-shadow:0 1px 8px rgba(0,0,0,.35)}
+.tile small{position:absolute;left:22px;bottom:56px;font-size:12px;letter-spacing:.14em;text-transform:uppercase;opacity:.9}
+.band{background:var(--alt)}
+.split{display:grid;grid-template-columns:1.1fr 1fr;gap:0;align-items:stretch;max-width:1240px;margin:0 auto}
+.split .im{min-height:460px;position:relative;background:#1f4a38}
+.split .im .sc{position:absolute;inset:0}
+.split .tx{padding:64px 48px;display:flex;flex-direction:column;justify-content:center}
+.split h2{font-size:clamp(30px,4.5vw,52px)}
+.split p{color:var(--muted);max-width:44ch}
+.link{font-weight:700;text-decoration:underline;text-underline-offset:5px;margin-top:10px;display:inline-block}
+.prods{display:grid;grid-template-columns:repeat(auto-fit,minmax(220px,1fr));gap:22px}
+.pr{text-decoration:none}
+.pr .ph{aspect-ratio:1;background:var(--alt);position:relative;overflow:hidden;margin-bottom:12px}
+.pr .ph .sc{position:absolute;inset:0}
+.pr b{display:block;font-size:15px}
+.pr span{font-size:14px;color:var(--muted)}
+.tag{position:absolute;top:10px;left:10px;background:var(--bg);color:var(--ink);font-size:11px;font-weight:700;padding:3px 9px;letter-spacing:.06em;z-index:1}
+.jr{display:grid;grid-template-columns:repeat(auto-fit,minmax(260px,1fr));gap:22px}
+.jr a{text-decoration:none}
+.jr .ph{aspect-ratio:3/2;position:relative;overflow:hidden;margin-bottom:12px;background:#1f4a38}
+.jr .ph .sc{position:absolute;inset:0}
+.jr h3{margin:0 0 4px;font-size:20px;line-height:1.2}
+.jr p{margin:0;color:var(--muted);font-size:15px}
+.cols{display:grid;grid-template-columns:repeat(auto-fit,minmax(240px,1fr));gap:36px}
+.cols h3{font-size:18px;margin:0 0 6px;border-top:3px solid var(--ink);padding-top:14px}
+.cols p{margin:0;color:var(--muted);font-size:15px}
+.big{background:var(--bar);color:var(--bar-ink);text-align:center;padding:84px 28px}
+.big h2{font-size:clamp(34px,7vw,76px);letter-spacing:-.03em;margin-bottom:18px}
+.big .btn{background:var(--gold);color:#141a16}
+footer{padding:48px 28px calc(40px + env(safe-area-inset-bottom,0px));max-width:1240px;margin:0 auto;display:grid;grid-template-columns:repeat(auto-fit,minmax(170px,1fr));gap:28px;font-size:14px}
+footer b{display:block;margin-bottom:8px;font-size:13px;letter-spacing:.1em;text-transform:uppercase}
+footer a{display:block;text-decoration:none;color:var(--muted);padding:2px 0}
+footer a:hover{color:var(--ink)}
+.copy{grid-column:1/-1;border-top:1px solid var(--line);padding-top:18px;color:var(--muted);font-size:13px}
+@media (max-width:760px){nav{display:none}header{padding:14px 18px}.sec{padding:52px 18px}.split{grid-template-columns:1fr}.split .im{min-height:300px}.split .tx{padding:40px 22px}.hero .txt{padding:32px 18px}}
+</style>
+</head>
+<body>
+
+<div class="ann">Première collection : suivez le lancement jour après jour. <a href="https://www.instagram.com/srapigaruc_/" target="_blank" rel="noopener">Instagram</a></div>
+
+<header>
+<a class="logo" href="#top">Srapigaruc</a>
+<nav><a href="#collection">Collection</a><a href="#nouveautes">Nouveautés</a><a href="#univers">Univers</a><a href="#journal">Journal</a><a href="#engagements">Savoir-faire</a></nav>
+<a class="ig" href="https://www.instagram.com/srapigaruc_/" target="_blank" rel="noopener">Instagram</a>
+</header>
+
+<section class="hero" id="top">
+<div class="sc" data-s="0"></div>
+<div class="txt"><h1>Go wild.</h1><p>Vêtements, sacs à dos et kits pour la randonnée. Pensés pour la forêt, faits pour aller loin.</p><a class="btn" href="#collection">Voir la collection</a><a class="btn l" href="#univers">Notre univers</a></div>
+</section>
+
+<section class="sec" id="collection">
+<div class="k">Collection</div><h2>Choisissez votre terrain de jeu.</h2><p class="sub">La première collection Srapigaruc réunit tout ce qu’il faut pour partir.</p>
+<div class="tiles">
+<a class="tile" href="#nouveautes"><div class="sc" data-s="1"></div><small>Collection</small><span>Vêtements</span></a>
+<a class="tile" href="#nouveautes"><div class="sc" data-s="2"></div><small>Collection</small><span>Sacs à dos</span></a>
+<a class="tile" href="#nouveautes"><div class="sc" data-s="3"></div><small>Collection</small><span>Kits</span></a>
+</div>
+</section>
+
+<section class="band" id="univers"><div class="split">
+<div class="im"><div class="sc" data-s="4"></div></div>
+<div class="tx"><div class="k">Notre univers</div><h2>Partez. Respirez. Vivez.</h2><p>Srapigaruc est née d’une envie simple : passer plus de temps dehors. Chaque pièce est pensée pour accompagner vos sorties, de la balade en forêt à l’ascension de week-end.</p><a class="link" href="#journal">Lire le journal</a></div>
+</div></section>
+
+<section class="sec" id="nouveautes">
+<div class="k">Nouveautés</div><h2>La première collection.</h2><p class="sub">Les produits arrivent bientôt. Suivez-nous pour être prévenus en premier.</p>
+<div class="prods">
+<a class="pr" href="https://www.instagram.com/srapigaruc_/"><div class="ph"><span class="tag">BIENTÔT</span><div class="sc" data-s="5"></div></div><b>Sac à dos</b><span>Première collection</span></a>
+<a class="pr" href="https://www.instagram.com/srapigaruc_/"><div class="ph"><span class="tag">BIENTÔT</span><div class="sc" data-s="6"></div></div><b>Kit de départ</b><span>Première collection</span></a>
+<a class="pr" href="https://www.instagram.com/srapigaruc_/"><div class="ph"><span class="tag">BIENTÔT</span><div class="sc" data-s="7"></div></div><b>Vêtements de forêt</b><span>Première collection</span></a>
+<a class="pr" href="https://www.instagram.com/srapigaruc_/"><div class="ph"><span class="tag">BIENTÔT</span><div class="sc" data-s="8"></div></div><b>Équipements</b><span>Première collection</span></a>
+</div>
+</section>
+
+<section class="band"><div class="sec" id="journal">
+<div class="k">Journal</div><h2>Histoires de sentier.</h2><p class="sub">Les coulisses de la marque, racontées au fil des semaines.</p>
+<div class="jr">
+<a href="https://www.instagram.com/srapigaruc_/"><div class="ph"><div class="sc" data-s="9"></div></div><h3>Qui se cache derrière Srapigaruc</h3><p>Rencontre avec les personnes qui créent la marque.</p></a>
+<a href="https://www.instagram.com/srapigaruc_/"><div class="ph"><div class="sc" data-s="10"></div></div><h3>La check-list du randonneur</h3><p>Les indispensables à glisser dans le sac avant de partir.</p></a>
+<a href="https://www.instagram.com/srapigaruc_/"><div class="ph"><div class="sc" data-s="11"></div></div><h3>Dans les coulisses d’un shooting</h3><p>Comment se prépare une journée de photos en pleine nature.</p></a>
+</div>
+</div></section>
+
+<section class="sec" id="engagements">
+<div class="k">Savoir-faire</div><h2>Des pièces pensées pour durer.</h2><p class="sub">Trois principes guident la conception de chaque produit.</p>
+<div class="cols">
+<div><h3>Des matériaux choisis</h3><p>Nous sélectionnons chaque matière pour sa tenue sur le terrain, et nous en parlons en toute transparence.</p></div>
+<div><h3>Des finitions soignées</h3><p>Coutures, fermetures, renforts : les détails font la différence après des heures de marche.</p></div>
+<div><h3>Testé dehors</h3><p>Nos produits sont imaginés en pleine nature, avec les randonneurs, pour répondre à de vrais besoins.</p></div>
+</div>
+</section>
+
+<section class="big"><h2>Rejoignez la cordée.</h2><a class="btn" href="https://www.instagram.com/srapigaruc_/" target="_blank" rel="noopener">Suivre @srapigaruc_</a></section>
+
+<footer>
+<div><b>Srapigaruc</b><a href="#univers">Notre univers</a><a href="#journal">Journal</a><a href="#engagements">Savoir-faire</a></div>
+<div><b>Collection</b><a href="#collection">Vêtements</a><a href="#collection">Sacs à dos</a><a href="#collection">Kits</a></div>
+<div><b>Suivre</b><a href="https://www.instagram.com/srapigaruc_/" target="_blank" rel="noopener">Instagram</a></div>
+<div class="copy">© 2026 Srapigaruc. Go wild.</div>
+</footer>
+
+<script>
+var P=[["#f2b824","#2a7f8c","#1f4a38","#0e2a1f"],["#e8625f","#f2b824","#2a7f8c","#1f4a38"],["#2a7f8c","#9cc7b4","#1f4a38","#0e2a1f"],["#f2b824","#e8625f","#5d8c6f","#1f4a38"]];
+function sc(i){
+var c=P[i%4],r=function(n){var x=Math.sin(i*97+n*13.7)*10000;return x-Math.floor(x)};
+var d1="M0,300 L0,"+(150+r(1)*60),d2="M0,300 L0,"+(210+r(2)*40),d3="M0,300 L0,260";
+for(var k=1;k<=8;k++){var x=k*100;d1+=" L"+x+","+(60+r(k+3)*110);d2+=" L"+x+","+(150+r(k+11)*90);d3+=" L"+x+","+(230+r(k+21)*40)}
+var sx=100+r(5)*600,sy=60+r(6)*50;
+return '<svg class="sc" viewBox="0 0 800 300" preserveAspectRatio="xMidYMid slice" aria-hidden="true"><defs><linearGradient id="g'+i+'" x1="0" y1="0" x2="0" y2="1"><stop offset="0" stop-color="'+c[1]+'"/><stop offset="1" stop-color="'+c[0]+'" stop-opacity=".55"/></linearGradient></defs><rect width="800" height="300" fill="url(#g'+i+')"/><circle cx="'+sx+'" cy="'+sy+'" r="'+(30+r(7)*26)+'" fill="'+c[0]+'"/><path d="'+d1+' L800,300Z" fill="'+c[2]+'" opacity=".55"/><path d="'+d2+' L800,300Z" fill="'+c[2]+'"/><path d="'+d3+' L800,300Z" fill="'+c[3]+'"/></svg>'}
+document.querySelectorAll("[data-s]").forEach(function(e){e.insertAdjacentHTML("afterbegin",sc(+e.dataset.s))});
+</script>
+</body>
+</html>
